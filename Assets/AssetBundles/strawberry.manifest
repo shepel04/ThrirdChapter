@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 492825324
+CRC: 3904692726
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ddd0f23d94b99eeca571aea3ec3d913c
+    Hash: 1da73a6e1e2e428439abef5c7b2f8c08
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f313c948dc7a0764794f5032af911572
+    Hash: e5d472fb301344f4c4bc7c35254eaa0e
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: ddd0f23d94b99eeca571aea3ec3d913c
+    Hash: 1da73a6e1e2e428439abef5c7b2f8c08
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -32,17 +32,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 64
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 42d42f57e3bd645ca84ba0d949721134, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 908a00387b3a90c4dbe1c35dd9570997, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
-- Class: 213
-  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Prefabs/Fruits/Watermelon.prefab
+- Assets/Prefabs/Fruits/Strawberry.prefab
 Dependencies: []

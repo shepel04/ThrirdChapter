@@ -9,6 +9,7 @@ namespace Inventory
 {
     public class ItemSelector : MonoBehaviour
     {
+        public event Action OnInventoryWeightChanged;
         public InventorySlot SelectedInventorySlot;
         
         [SerializeField] private List<Image> _images;
@@ -16,6 +17,7 @@ namespace Inventory
         [SerializeField] private Sprite _sprite;
         [SerializeField] private InventoryUI _inventoryUI;
         [SerializeField] private Transform _playerTransform;
+        [SerializeField] private Slider _inventorySlider;
 
         private int _selectedItemIndex;
 
@@ -31,8 +33,9 @@ namespace Inventory
 
             if (Input.GetKeyDown(KeyCode.G))
             {
-                if (SelectedInventorySlot != null && SelectedInventorySlot.Amount >= 1)
+                if (_playerInventory.Items.Count > 0)
                 {
+                    OnInventoryWeightChanged?.Invoke();
                     RemoveSelectedItem(SelectedInventorySlot);
                 }
             }
@@ -52,29 +55,21 @@ namespace Inventory
         {
             if (selectedInventorySlot.Amount == 1)
             {
-                selectedInventorySlot.Amount -= 1;
-                selectedInventorySlot.Weight -= selectedInventorySlot.Item.Weight;
-                
-                selectedInventorySlot.Weight = 0;
-                selectedInventorySlot.Amount = 0;
-                selectedInventorySlot.Item = null;
+                _playerInventory.CurrentInventoryWeight = 0;
                 _playerInventory.Items.Remove(selectedInventorySlot);
+                SpawnItemInWorld(selectedInventorySlot.Item, selectedInventorySlot);
 
-                // _inventoryUI.UpdateUI(_playerInventory);
+                _inventoryUI.UpdateUI(_playerInventory);
 
-                // _playerInventory.OnInventoryChanged.Invoke();
-            }
-            else if (selectedInventorySlot.Amount != 0)
-            {
-                selectedInventorySlot.Amount -= 1;
-                selectedInventorySlot.Weight -= selectedInventorySlot.Item.Weight;   
                 _playerInventory.OnInventoryChanged.Invoke();
             }
-            
-
-            if (selectedInventorySlot != null && selectedInventorySlot.Amount > 0)
+            else if (selectedInventorySlot.Amount > 1)
             {
+                _playerInventory.CurrentInventoryWeight -= selectedInventorySlot.Item.Weight;
+                selectedInventorySlot.Amount -= 1;
+                selectedInventorySlot.Weight -= selectedInventorySlot.Item.Weight;   
                 SpawnItemInWorld(selectedInventorySlot.Item, selectedInventorySlot);
+                _playerInventory.OnInventoryChanged.Invoke();
             }
         }
 

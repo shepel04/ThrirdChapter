@@ -9,6 +9,7 @@ namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
+        public event Action OnInventoryWeightChanged;
         [SerializeField] public List<InventorySlot> Items = new List<InventorySlot>();
         [SerializeField] public UnityEvent OnInventoryChanged;
 
@@ -16,11 +17,14 @@ namespace Inventory
         private float _maxInventoryWeight = 20f;
         
         public float MaxInventoryWeight => _maxInventoryWeight;
-        public float CurrentInventoryWeight => _currentInventoryWeight;
-
-        private void Update()
+        public float CurrentInventoryWeight
         {
-            
+            get => _currentInventoryWeight;
+            set
+            {
+                _currentInventoryWeight = value;
+                OnInventoryWeightChanged?.Invoke();
+            }
         }
 
         public bool AddItems(Item item, int amount = 1)
@@ -47,6 +51,7 @@ namespace Inventory
             Items.Add(newSlot);
 
             OnInventoryChanged.Invoke();
+            OnInventoryWeightChanged?.Invoke();
 
             return true;
         }
@@ -83,6 +88,16 @@ namespace Inventory
             OnInventoryChanged.Invoke();
         }
         
+        public void ClearOnInventoryWeightChanged()
+        {
+            if (OnInventoryWeightChanged != null)
+            {
+                foreach (var d in OnInventoryWeightChanged.GetInvocationList())
+                {
+                    OnInventoryWeightChanged -= (Action)d;
+                }
+            }
+        }
     }
 }
 

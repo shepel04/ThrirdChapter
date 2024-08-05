@@ -15,7 +15,7 @@ public class DownloadAssetBundles : MonoBehaviour
     {
         GameObject targetGameObject = null;
 
-        string url = "https://drive.usercontent.google.com/download?id=1TUhiv4Ja1cXDfvRPZU_uZTCTTgtgsN3g&export=download&authuser=0";
+        string url = "https://drive.usercontent.google.com/u/0/uc?id=1fG-jTqFM1B5IPpT7ox62jKMFDYJ6djsw&export=download";
 
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
