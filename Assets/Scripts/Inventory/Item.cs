@@ -8,6 +8,7 @@ namespace Inventory
         public string ItemName;
         public Sprite Icon;
         public int Weight;
+        public GameObject ItemPrefab;
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,7 +13,8 @@ namespace Inventory
     {
         [SerializeField] private List<Image> _icons = new List<Image>();
         [SerializeField] private List<TMP_Text> _amounts = new List<TMP_Text>();
-
+        
+        
         public void UpdateUI(Inventory inventory)
         {
             for (int i = 0; i < inventory.GetSize() && i < _icons.Count; i++)

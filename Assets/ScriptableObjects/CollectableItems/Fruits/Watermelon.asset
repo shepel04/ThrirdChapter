@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 908a00387b3a90c4dbe1c35dd9570997, type: 3}
-  m_Name: AppleScriptableObject
+  m_Name: Watermelon
   m_EditorClassIdentifier: 
-  ItemName: 
-  Icon: {fileID: 0}
-  Weight: 0
+  ItemName: Watermelon
+  Icon: {fileID: 21300000, guid: 24a06563534c741ac8ad867f71b4320e, type: 3}
+  Weight: 5
+  ItemPrefab: {fileID: 919132149155446097, guid: c24bb3da931dfe84f88816cde5d356ef,
+    type: 3}

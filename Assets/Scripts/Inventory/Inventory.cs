@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +17,12 @@ namespace Inventory
         
         public float MaxInventoryWeight => _maxInventoryWeight;
         public float CurrentInventoryWeight => _currentInventoryWeight;
-        
+
+        private void Update()
+        {
+            
+        }
+
         public bool AddItems(Item item, int amount = 1)
         {
             foreach (var slot in Items)
@@ -69,6 +75,14 @@ namespace Inventory
         {
             return Items.Count;
         }
+        
+        public void UpdateInventory(List<InventorySlot> newItems)
+        {
+            Items = newItems;
+            _currentInventoryWeight = CountCurrentInventoryWeight();
+            OnInventoryChanged.Invoke();
+        }
+        
     }
 }
 

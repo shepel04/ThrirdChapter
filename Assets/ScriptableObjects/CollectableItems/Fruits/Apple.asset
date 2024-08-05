@@ -15,3 +15,5 @@ MonoBehaviour:
   ItemName: Apple
   Icon: {fileID: 21300000, guid: 3714e92262e364627ae5f0b09eade4ca, type: 3}
   Weight: 5
+  ItemPrefab: {fileID: 4008610799542497148, guid: 54545446ea7bb1d49a60e927b5cc5fe6,
+    type: 3}
