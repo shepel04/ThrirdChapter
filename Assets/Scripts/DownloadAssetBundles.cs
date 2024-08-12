@@ -1,19 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.IO;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
 public class DownloadAssetBundles : MonoBehaviour
 {
+
+    [SerializeField] private Sprite _loadAssetSprite;
     void Start()
     {
-        StartCoroutine(DownloadAssetBundleFromServer());
+        var myLoadedAssetBundle 
+            = AssetBundle.LoadFromFile("Assets/AssetBundles/test");
+        if (myLoadedAssetBundle == null) {
+            Debug.Log("Failed to load AssetBundle!");
+            return;
+        }
+        _loadAssetSprite = myLoadedAssetBundle.LoadAsset<Sprite>("pngtree-watermelon-fruit-vector-illustration-png-image_6099706");
+        //Instantiate(prefab);
     }
 
     private IEnumerator DownloadAssetBundleFromServer()
     {
-        GameObject targetGameObject = null;
 
         string url = "https://drive.usercontent.google.com/u/0/uc?id=1fG-jTqFM1B5IPpT7ox62jKMFDYJ6djsw&export=download";
 
@@ -28,16 +37,16 @@ public class DownloadAssetBundles : MonoBehaviour
             else
             {
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
-                targetGameObject = bundle.LoadAsset(bundle.GetAllAssetNames() [0]) as GameObject;
-                bundle.Unload(false);
-                yield return new WaitForEndOfFrame();
+                var targetGameObject = bundle.LoadAssetAsync(bundle.GetAllAssetNames() [0]);
+                //bundle.Unload(false);
+                yield return targetGameObject;
             }
             www.Dispose();
         }
-        InstantiateGameObjectFromAssetBundle(targetGameObject);
+        //InstantiateGameObjectFromAssetBundle(targetGameObject);
     }
 
-    private void InstantiateGameObjectFromAssetBundle(GameObject targetGameObject)
+    /*private void InstantiateGameObjectFromAssetBundle(Sprite targetGameObject)
     {
         if (targetGameObject != null)
         {
@@ -48,6 +57,6 @@ public class DownloadAssetBundles : MonoBehaviour
         {
             Debug.LogWarning("Asset bundle is null");
         }
-    }
+    }*/
 
 }

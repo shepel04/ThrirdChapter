@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 492825324
+CRC: 3009623483
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ddd0f23d94b99eeca571aea3ec3d913c
+    Hash: 5dae57d4e012f4e2ec7887dd89cc94c6
   TypeTreeHash:
     serializedVersion: 2
     Hash: f313c948dc7a0764794f5032af911572
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: ddd0f23d94b99eeca571aea3ec3d913c
+    Hash: 5dae57d4e012f4e2ec7887dd89cc94c6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -45,4 +45,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/Fruits/Watermelon.prefab
-Dependencies: []
+Dependencies:
+- D:/Unity/ThrirdChapter/Assets/AssetBundles/test

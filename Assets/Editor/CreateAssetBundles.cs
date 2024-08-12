@@ -1,24 +1,23 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Windows;
 
 namespace Editor
 {
     public class CreateAssetBundles
     {
-        [MenuItem("Custom/Build AssetBundles")]
-        private static void BuildAllAssetBundles()
+        [MenuItem("Assets/Build AssetBundles")]
+        static void BuildAllAssetBundles()
         {
-            string assetBundlePath = Application.dataPath + "/AssetBundles";
-            try
+            string assetBundleDirectory = "Assets/AssetBundles";
+            if(!Directory.Exists(assetBundleDirectory))
             {
-                BuildPipeline.BuildAssetBundles(assetBundlePath, BuildAssetBundleOptions.None,
-                    EditorUserBuildSettings.activeBuildTarget);
+                Directory.CreateDirectory(assetBundleDirectory);
             }
-            catch (Exception e)
-            {
-                Debug.LogWarning(e);
-            }
+            BuildPipeline.BuildAssetBundles(assetBundleDirectory, 
+                BuildAssetBundleOptions.None, 
+                BuildTarget.StandaloneWindows);
         }
     }
 }

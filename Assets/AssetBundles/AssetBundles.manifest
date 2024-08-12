@@ -1,10 +1,11 @@
 ManifestFileVersion: 0
-CRC: 4011488723
+CRC: 3647256146
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: models
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: test
     Info_1:
       Name: sprites
       Dependencies: {}
@@ -13,4 +14,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_3:
       Name: strawberry
+      Dependencies: {}
+    Info_4:
+      Name: test
       Dependencies: {}
